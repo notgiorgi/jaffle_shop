@@ -3,7 +3,8 @@ models:
   - name: customers
     meta:
       spotlight:
-        categories: ["experimental"]
+        categories:
+          - experimental
       joins:
         - join: membership
           hidden: true
@@ -28,7 +29,8 @@ models:
               label: Unique customer count
               description: Total number of customers
               spotlight:
-                categories: ["core"]
+                categories:
+                  - core
       - name: first_name
         description: |
           # First name
@@ -40,12 +42,16 @@ models:
           dimension:
             type: string
             urls:
-              - label: "URL from value"
-                url: "https://example.com/company/${value.formatted | url_encode }"
-              - label: "URL from row value"
-                url: "https://example.com/company/${row.customers.customer_id.raw | url_encode }"
-              - label: "Invalid URL with bad reference"
-                url: "https://example.com/company/${row.customer_id.raw | url_encode }"
+              - label: URL from value
+                url: https://example.com/company/${value.formatted | url_encode }
+              - label: URL from row value
+                url: >-
+                  https://example.com/company/${row.customers.customer_id.raw |
+                  url_encode }
+              - label: Invalid URL with bad reference
+                url: >-
+                  https://example.com/company/${row.customer_id.raw | url_encode
+                  }
       - name: last_name
         description: Customer's last name. PII.
       - name: age
@@ -145,7 +151,6 @@ models:
                 - status:
                     - completed
                     - shipped
-
       - name: is_completed
         description: Boolean indicating if status is completed
         meta:
@@ -177,24 +182,26 @@ models:
         meta:
           dimension:
             type: date
-            time_intervals: ["DAY", "WEEK", "MONTH", "YEAR"]
+            time_intervals:
+              - DAY
+              - WEEK
+              - MONTH
+              - YEAR
           metrics:
             date_of_first_order:
               type: min
             date_of_most_recent_order:
               type: max
       - name: status
-        description: '{{ doc("orders_status") }}'
+        description: "{{ doc(\"orders_status\") }}"
         meta:
           dimension:
             colors:
-              # Hex colors are supported in both chart config and echarts
-              "placed": "#e6fa0f"
-              "completed": "#00FF00"
-              # Rgb/rgba/name colors are not supported in chart config, but supported in echarts
-              "shipped": "rgba(47, 119, 150, 0.7)"
-              "return_pending": "orange"
-              "returned": "rgb(247, 32, 32)"
+              placed: "#e6fa0f"
+              completed: "#00FF00"
+              shipped: rgba(47, 119, 150, 0.7)
+              return_pending: orange
+              returned: rgb(247, 32, 32)
         tests:
           - accepted_values:
               values:
@@ -233,7 +240,7 @@ models:
                 - is_completed: "true"
             total_non_completed_order_amount:
               type: number
-              format: "$#,##0.00"
+              format: $#,##0.00
               sql: ${total_order_amount}-${total_completed_order_amount}
           dimension:
             hidden: true
@@ -292,3 +299,15 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+          additional_dimensions:
+            amount size:
+              label: Amount size
+              name: amount_size
+              description: ""
+              type: string
+              sql: |-
+                CASE
+                    WHEN \${payments.amount} < 10 THEN 'S'
+                    WHEN \${payments.amount} BETWEEN 10 AND 20 THEN 'M'
+                    WHEN \${payments.amount} > 20 THEN 'L'
+                END
