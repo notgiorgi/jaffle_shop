@@ -288,6 +288,12 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+        additional_dimensions:
+          label: Fk ref custom sql dimension
+          name: _fk_ref_custom_sql_dimension
+          description: ""
+          type: string
+          sql: ${customers.customer_id}
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
