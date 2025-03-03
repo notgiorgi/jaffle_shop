@@ -299,3 +299,9 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+        additional_dimensions:
+          label: Ref custom sql dimension
+          name: _ref_custom_sql_dimension
+          description: ""
+          type: number
+          sql: ${payments.amount}
