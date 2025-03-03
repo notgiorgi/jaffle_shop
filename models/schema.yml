@@ -288,6 +288,12 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+        additional_dimensions:
+          label: Noref
+          name: _noref_
+          description: ""
+          type: number
+          sql: "8"
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
