@@ -208,6 +208,12 @@ models:
               shipped: rgba(47, 119, 150, 0.7)
               return_pending: orange
               returned: rgb(247, 32, 32)
+          additional_dimensions:
+            sql_order_id_and_status_:
+              label: Sql order id and status
+              name: sql_order_id_and_status_
+              type: string
+              sql: ${orders.status} || ' ' || ${orders.order_id}
         tests:
           - accepted_values:
               values:
