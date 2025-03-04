@@ -37,6 +37,12 @@ models:
             name: sql_customer_id
             type: string
             sql: ${customers.customer_id}
+          sql_customer_name:
+            label: Sql customer name
+            name: sql_customer_name
+            type: string
+            sql: ${customers.customer_id} || ' ' || ${customers.first_name} || ' '
+              ||${customers.last_name}
       - name: first_name
         description: |
           # First name
