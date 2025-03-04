@@ -31,12 +31,6 @@ models:
               spotlight:
                 categories:
                   - core
-          additional_dimensions:
-            sql_customer_id:
-              label: Sql customer id
-              name: sql_customer_id
-              type: string
-              sql: ${customers.customer_id}
       - name: first_name
         description: |
           # First name
@@ -208,12 +202,6 @@ models:
               shipped: rgba(47, 119, 150, 0.7)
               return_pending: orange
               returned: rgb(247, 32, 32)
-          additional_dimensions:
-            sql_order_id_and_status_:
-              label: Sql order id and status
-              name: sql_order_id_and_status_
-              type: string
-              sql: ${orders.status} || ' ' || ${orders.order_id}
         tests:
           - accepted_values:
               values:
@@ -300,17 +288,6 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
-          additional_dimensions:
-            sql_just_8:
-              label: Sql just 8
-              name: sql_just_8
-              type: number
-              sql: "8"
-            sql_orders_is_completed:
-              label: Sql orders not completed
-              name: sql_orders_is_completed
-              type: boolean
-              sql: not ${orders.is_completed}
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
@@ -322,9 +299,3 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
-          additional_dimensions:
-            sql_amount_plus_one:
-              label: Sql amount plus one
-              name: sql_amount_plus_one
-              type: number
-              sql: ${payments.amount} + 1
