@@ -288,6 +288,13 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+          additional_dimensions:
+            sql_just_eight:
+              label: Sql just eight
+              name: sql_just_eight
+              description: ""
+              type: number
+              sql: "8"
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
@@ -299,3 +306,10 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+          additional_dimensions:
+            sql_payment_amount_plus_one:
+              label: Sql payment amount plus one
+              name: sql_payment_amount_plus_one
+              description: ""
+              type: string
+              sql: ${payments.amount} + 1
