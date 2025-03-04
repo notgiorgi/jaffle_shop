@@ -31,6 +31,10 @@ models:
               spotlight:
                 categories:
                   - core
+            customer_id_count_distinct_of_customer_id:
+              label: Count distinct of Customer id
+              description: "Count distinct of Customer id on the table Customers "
+              type: count_distinct
       - name: first_name
         description: |
           # First name
