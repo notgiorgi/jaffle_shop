@@ -312,6 +312,11 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+            amount_max_of_amount:
+              label: Max of Amount
+              description: "Max of Amount on the table Payments "
+              type: max
+              filters: []
         additional_dimensions:
           sql_payment_amount_plus_one:
             label: Sql payment amount plus one
