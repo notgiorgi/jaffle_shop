@@ -58,6 +58,12 @@ models:
                 url: >-
                   https://example.com/company/${row.customer_id.raw | url_encode
                   }
+        additional_dimensions:
+          sql_customer_name:
+            label: Sql customer name
+            name: sql_customer_name
+            type: string
+            sql: ${customers.first_name} || ' ' ||${customers.last_name}
       - name: last_name
         description: Customer's last name. PII.
       - name: age
