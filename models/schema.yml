@@ -299,3 +299,8 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+            amount_min_of_amount:
+              label: Min of Amount
+              description: "Min of Amount on the table Payments "
+              type: min
+              filters: []
