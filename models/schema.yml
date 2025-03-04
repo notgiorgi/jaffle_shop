@@ -288,6 +288,12 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+        additional_dimensions:
+          sql_orders_is_completed:
+            label: Sql orders not completed
+            name: sql_orders_is_completed
+            type: boolean
+            sql: not ${orders.is_completed}
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
