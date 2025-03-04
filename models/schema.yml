@@ -299,3 +299,7 @@ models:
             total_revenue:
               type: sum
               description: Sum of all payments
+            amount__weird_name_skjd2_sum_of_amount:
+              label: '[weird name] "/skjd2#$@ Sum of Amount'
+              description: "Sum of Sum of Amount on the table Payments "
+              type: sum
