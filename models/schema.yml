@@ -202,6 +202,11 @@ models:
               shipped: rgba(47, 119, 150, 0.7)
               return_pending: orange
               returned: rgb(247, 32, 32)
+          additional_dimensions:
+            is_shipped:
+              label: Sql is shipped
+              type: boolean
+              sql: ${orders.status} = 'shipped'
         tests:
           - accepted_values:
               values:
