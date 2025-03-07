@@ -202,6 +202,11 @@ models:
               shipped: rgba(47, 119, 150, 0.7)
               return_pending: orange
               returned: rgb(247, 32, 32)
+          additional_dimensions:
+            is_shipped:
+              label: Sql is shipped
+              type: boolean
+              sql: ${orders.status} = 'shipped'
         tests:
           - accepted_values:
               values:
@@ -288,10 +293,25 @@ models:
             unique_payment_count:
               type: count_distinct
               description: count of all payments
+          additional_dimensions:
+            sql_random:
+              label: Sql random
+              type: number
+              sql: RANDOM()
+            sql_customer_name:
+              label: Sql customer name
+              type: string
+              sql: ${customers.first_name} || ' ' || ${customers.last_name}
       - name: order_id
         description: Foreign key to the orders table
       - name: payment_method
         description: Method of payment used, for example credit card
+        meta:
+          additional_dimensions:
+            sql_amount_and_method:
+              label: Sql amount and method
+              type: string
+              sql: ${payments.payment_method} || ' ' || ${payments.amount}
       - name: amount
         description: Total amount (AUD) of the individual payment
         meta:
