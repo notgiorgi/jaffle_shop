@@ -177,6 +177,13 @@ models:
           - relationships:
               to: ref('customers')
               field: customer_id
+        meta:
+          metrics:
+            customer_id_count_of_customer_id:
+              label: Count of Customer id
+              description: "Count of Customer id on the table Orders "
+              type: count
+              filters: []
       - name: order_date
         description: Date (UTC) that the order was placed
         meta:
