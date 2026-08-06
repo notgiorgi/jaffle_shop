@@ -24,3 +24,17 @@ entries:
       - type: field
         explore: orders
         fieldId: orders_total_order_amount
+  - id: atlas-shipping-ratio
+    kind: definition
+    content: |-
+      when they ask for "Atlas Shipping Ratio", interpret it as shipping cost as a share of order value and use the exact metric field orders_shipping_cost_vs_order_value from the orders explore
+      Present it as a single-value / big-number visualization by default unless the user explicitly asks for a different visualization
+      Do not auto-save the chart to a space; only save if the user explicitly asks
+    terms:
+      - Atlas Shipping Ratio
+      - Shipping Cost as % of Order Value
+      - big-number
+    objects:
+      - type: field
+        explore: orders
+        fieldId: orders_shipping_cost_vs_order_value
