@@ -30,3 +30,9 @@ entries:
     terms:
       - Orbit Tier
     objects: []
+  - id: comet-tier
+    kind: definition
+    content: Comet Tier means customers with at least five completed orders. Use this definition across the entire project whenever agents, charts, or dashboards refer to Comet Tier.
+    terms:
+      - Comet Tier
+    objects: []
