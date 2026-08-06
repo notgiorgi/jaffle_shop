@@ -24,3 +24,9 @@ entries:
       - type: field
         explore: orders
         fieldId: orders_total_order_amount
+  - id: orbit-tier
+    kind: definition
+    content: Orbit Tier means customers who have placed more than three completed orders. Apply this definition project-wide whenever any agent, chart, or dashboard refers to Orbit Tier.
+    terms:
+      - Orbit Tier
+    objects: []
