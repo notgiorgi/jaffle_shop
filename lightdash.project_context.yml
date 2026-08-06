@@ -1,0 +1,26 @@
+# What your AI agents read before they answer.
+# Add things here to teach them your terms and how your data fits together.
+# Merge a change to this file and your future answers get better.
+# Managed from the Reviews tab under Ask AI.
+version: 2
+entries:
+  - id: northstar-revenue
+    kind: definition
+    content: |-
+      when they ask for "Northstar Revenue", interpret it as completed-order revenue and use the exact metric field orders_total_completed_order_amount by default
+      Do not use the gross metric orders_total_order_amount unless the user explicitly asks for gross order value
+      Also, do not use payments_total_revenue for Northstar Revenue unless the user explicitly instructs otherwise
+      Present it as a single-value / big-number visualization by default unless the user explicitly asks for a different revenue definition or a different visualization
+    terms:
+      - Northstar Revenue
+      - completed-order revenue
+      - orders_total_completed_order_amount
+      - orders_total_order_amount
+      - gross order value
+    objects:
+      - type: field
+        explore: orders
+        fieldId: orders_total_completed_order_amount
+      - type: field
+        explore: orders
+        fieldId: orders_total_order_amount
